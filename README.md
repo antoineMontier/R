@@ -1,22 +1,22 @@
 # R-Learning
 
-to launch R : type `$ R` in terminal. `> help()` can be useful. `q()` is the exit function.
+to launch R : type `$ R` in terminal. `> help(command)` can be useful. `q()` is the exit function.
 
 # Basics
 ## Operators and math functions
 
-- +
-- -
-- *
-- /
-- sqrt()
-- ^
-- abs()
-- log()
-- sin()
-- cos()
-- round()
-- exp()
+- `+`
+- `-`
+- `*`
+- `/`
+- `sqrt()`
+- `^`
+- `abs()`
+- `log()`
+- `sin()`
+- `cos()`
+- `round()`
+- `exp()`
 
 are some of the traditional operators.
 
@@ -51,5 +51,33 @@ operator `:`
 > x
 [1] 1 2 3 4 5 6 7 #1 and 7 are included
 ```
+Sequence
+```R
+> seq(1,4,by=0.5)
+[1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0
 
+> seq(1,6,length=5)
+[1] 1.00 2.25 3.50 4.75 6.00
+```
+Scan : basic scanner that gets the input from the terminal.
 
+### operations on vectors
+every operations applied to a vector will apply to each slot
+```R
+> x
+[1] 2  4  6  8  9 11 13
+> x^2
+[1]   4  16  36  64  81 121 169
+> x > 7
+[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+```
+
+## statistics functions
+
+- `sum(arr)` calculates the sum of arr elements
+- `length(arr)` returns the length of 
+- `mean(arr)` calculates the average of the elements
+- `sd(arr)` calculates the standard deviation
+- `median(arr)` calculates the median of the elements
+- `var(arr)` calculates the variance of the elements `= sd(x)^2`
+- `summary(arr)`returns a summary of min, 1st quarter, median, average, 3rd quarter, and max.
