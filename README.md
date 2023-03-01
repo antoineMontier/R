@@ -81,3 +81,7 @@ every operations applied to a vector will apply to each slot
 - `median(arr)` calculates the median of the elements
 - `var(arr)` calculates the variance of the elements `= sd(x)^2`
 - `summary(arr)`returns a summary of min, 1st quarter, median, average, 3rd quarter, and max.
+
+## Table importation
+
+import a table using `var=read.table('tablename.ext')`
