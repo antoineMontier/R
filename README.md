@@ -84,4 +84,22 @@ every operations applied to a vector will apply to each slot
 
 ## Table importation
 
-import a table using `var=read.table('tablename.ext')`
+import a table using `var=read.table('tablename.ext')`. Another option is to just drag the file in Rstudio.
+
+## data.frame
+data.frame is exactly equivalent to a excel file. consider the following code for the dimensions : 
+```R
+$ dim(var)
+[1] 52 10 # the var object have 52 lines and 10 columns
+$ nrow(val)
+[1] 52 # the var object have 52 lines
+$ ncol(val)
+[1] 10 # the var object have 10 cols
+
+$ var[22, 6] # access the object at line 22 and column 6
+
+$ colnames(val) # returns the names of the columns (usually located above the first line, not neccessary a line)
+$ rownames(val) # returns the names of the rows
+```
+
+## plot functions
