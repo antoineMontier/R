@@ -103,3 +103,16 @@ $ rownames(val) # returns the names of the rows
 ```
 
 ## plot functions
+plot are function to create a graph from a data frame. they are personalisable, here's how :
+
+```R
+$ plot(var[1:2]) # creates a new plot with columns 1 (x-axis) and 2 (y-axis)
+
+$ plot(var$a,var$b, xlab="x-label", ylab="y-label", main="Title (main label)") # more advanced plot
+
+$ plot(var$a,var$b, xlab="x-label", ylab="y-label", main="Title (main label)", type="l") # type="l" stands for a line graphic (time values), default p (points) and last b (both)
+
+```
+also sub (subtitle) col (colors)...
+
+
