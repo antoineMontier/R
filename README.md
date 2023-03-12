@@ -115,4 +115,19 @@ $ plot(var$a,var$b, xlab="x-label", ylab="y-label", main="Title (main label)", t
 ```
 also sub (subtitle) col (colors)...
 
+## boxplot functions
+boxplot are functions that allows us to create a boxplot from a column of data frame. In french it's called "boîte à moustache". the middle bold mark is the median value. The bottom border is the first quarter and the upper border is the last quarter. Upper line ("moustache") is the min between max and Q3 + 1.5(Q3 - Q1). Downer line is the max between min and Q1 - 1.5(Q3 - Q1). We can sometimes notice "outliners" : points exceptionnaly high or low.
 
+Here's how to create a boxplot : 
+```R
+$ boxplot(ozone$maxO3) # creates a boxplot from the O3 column of ozone table
+$ boxplot(maxO3~vent,data=ozone) # will create a few boxplot, one for each wind sector in this example
+```
+
+## hist functions
+
+hist functions are used to display an histogram of the values of a given data frame. they come with many arguments. Here are some differents commands
+
+```R
+hist()
+```
