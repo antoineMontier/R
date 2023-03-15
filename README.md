@@ -112,6 +112,8 @@ $ plot(var$a,var$b, xlab="x-label", ylab="y-label", main="Title (main label)") #
 
 $ plot(var$a,var$b, xlab="x-label", ylab="y-label", main="Title (main label)", type="l") # type="l" stands for a line graphic (time values), default p (points) and last b (both)
 
+points(abs, ord)#adds a point at the specified coordinates
+
 ```
 also sub (subtitle) col (colors)...
 
@@ -129,5 +131,14 @@ $ boxplot(maxO3~vent,data=ozone) # will create a few boxplot, one for each wind 
 hist functions are used to display an histogram of the values of a given data frame. they come with many arguments. Here are some differents commands
 
 ```R
-hist()
+hist(variable, freq=TRUE/FALSE)
+#freq=TRUE : effectifs are represented by the bars // FALSE : the bars represents frequences
+hist(variable, breaks=int)
+#breaks stands for the approximative number of classes
+hist(variable, label=TRUE/FALSE)
+#label=TRUE : value of each bar will is write up the bar
+hist(variable, xlab='x-title', ylab='y-title', main='main-title')
+hist(variable, col='#FF00FF')
+#col stands for the color
+
 ```
