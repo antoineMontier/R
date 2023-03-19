@@ -102,6 +102,7 @@ $ colnames(val) # returns the names of the columns (usually located above the fi
 $ rownames(val) # returns the names of the rows
 ```
 
+The function `par(mfrow=c(lines, cols))` allow us to display multiple graph at the same time on a window, default mode is `par(mfrow=c(1, 1))`.
 ## plot functions
 plot are function to create a graph from a data frame. they are personalisable, here's how :
 
@@ -113,7 +114,6 @@ $ plot(var$a,var$b, xlab="x-label", ylab="y-label", main="Title (main label)") #
 $ plot(var$a,var$b, xlab="x-label", ylab="y-label", main="Title (main label)", type="l") # type="l" stands for a line graphic (time values), default p (points) and last b (both)
 
 points(abs, ord)#adds a point at the specified coordinates
-
 ```
 also sub (subtitle) col (colors)...
 
@@ -140,5 +140,13 @@ hist(variable, label=TRUE/FALSE)
 hist(variable, xlab='x-title', ylab='y-title', main='main-title')
 hist(variable, col='#FF00FF')
 #col stands for the color
-
 ```
+
+## 3-Dimension graph
+tri-dimension graph can link 3 variables, they come with a library. Here is an example : 
+```R
+library(lattice)
+cloud(maxO3~T12+Vx12, type=c("p", "h"), data=ozone)
+```
+
+## Linear Regression
