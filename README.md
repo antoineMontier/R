@@ -102,6 +102,15 @@ $ colnames(val) # returns the names of the columns (usually located above the fi
 $ rownames(val) # returns the names of the rows
 ```
 
+### How to create a data.frame ?
+```R
+#create the variables to hold the values : 
+blood.glucose <- c(15.30, 10.80, 8.10, 19.50, 7.20, 5.30, 9.30, 11.10, 7.50, 12.20, 6.70, 5.20, 19.00, 15.10, 6.70, 4.20, 10.30, 12.50, 16.10, 13.30, 4.90, 8.80, 9.50)
+short.velocity <- c(1.76, 1.34, 1.27, 1.47, 1.27, 1.49, 1.31, 1.09, 1.18, 1.22, 1.25, 1.19, 1.95, 1.28, 1.52, 1.12, 1.37, 1.19, 1.05, 1.32, 1.03, 1.12, 1.70)
+#insert into a data.frame
+diabet = data.frame(blood.glucose, short.velocity)
+```
+
 The function `par(mfrow=c(lines, cols))` allow us to display multiple graph at the same time on a window, default mode is `par(mfrow=c(1, 1))`.
 ## plot functions
 plot are function to create a graph from a data frame. they are personalisable, here's how :
@@ -116,6 +125,12 @@ $ plot(var$a,var$b, xlab="x-label", ylab="y-label", main="Title (main label)", t
 points(abs, ord)#adds a point at the specified coordinates
 ```
 also sub (subtitle) col (colors)...
+
+### Multiple functions on the same plot : 
+```R
+plot(x, pdf, type="l", col="red")
+lines(y, pdy, type="l", col="blue")
+```
 
 ## boxplot functions
 boxplot are functions that allows us to create a boxplot from a column of data frame. In french it's called "boîte à moustache". the middle bold mark is the median value. The bottom border is the first quarter and the upper border is the last quarter. Upper line ("moustache") is the min between max and Q3 + 1.5(Q3 - Q1). Downer line is the max between min and Q1 - 1.5(Q3 - Q1). We can sometimes notice "outliners" : points exceptionnaly high or low.
@@ -150,3 +165,97 @@ cloud(maxO3~T12+Vx12, type=c("p", "h"), data=ozone)
 ```
 
 ## Linear Regression
+Create an object : 
+```R
+reg.simple = lm(var-y~var-x, data=<actual_data.frame>)
+```
+### display the linear regression on the plot (previously created)
+abline(reg.simple)
+### display informations about the linear regression
+
+```R
+summary(reg.simple)
+```
+- `Call` : Reminds us which function we used (here it's `lm()`).
+- `Residuals` : summarizes the residuals of the linear regression (for each point it calculates the difference between the real value and the value computed by the linear regression)
+- `Estimate` : corresponds to the B1 and B0 parameters of the linear regression function
+- `Std. Error` : calculates standart deviation
+- `t-value` : is the output of the student tests (H0, H1).
+- `Pr(>|t|)` : is the p-value of the variable (p-value = 0.05 => 95% confidence for example)
+
+```R
+coef(reg.simple)
+```
+gives us B0 and B1 (in this order) according the equation : `Y = B0 + B1*X`.
+```R
+residuals(reg.simple)
+```
+provides us with the residuals for each point show the difference between the real point and the estimated value of the point.
+```R
+rstandard(reg.simple)
+```
+almost the same as up but for each point there is a more advanced calulation involving std deviation that leads to an interesting result. If the standard residuals are less than -3 or greater than 3, there are outliners.
+`rstudent(reg.simple)` would provide us with the student residuals.
+
+### Prediction
+```R
+predict(reg.simple,<data_frame_of_1_row_to_predict>,interval="pred")
+```
+here is an example of creation : 
+```R
+#-- create a data.frame
+xnew <- matrix(20, nrow=1)
+xnew <- as.data.frame(xnew)
+#-- submit the data frame for prediction
+predict(reg.simple,xnew,interval="pred")
+```
+
+# Probabilities laws
+
+## Functions
+For each probabiliy law, there are 4 functions : 
+- `d<law>()` density function for a continous probability function. =! P[X = k] if discrete
+- `p<law>()` repartition function (FDR) : P[X < `x`]
+- `q<law>()` quantiles function : returns the smallest `u` as F(`u`) <= `p` ; with `F` the FDR of the actual law
+- `r<law>()` : generates random distributions, independant of the `<law>` distribution
+
+## The laws
+1. binomial `binom` (`size`, `prob`)
+2. exponential `exp` (1/`mean`)
+3. fisher `f` (`df1`, `df2`)
+4. geometric `geom` (`prob`)
+5. chi-squared`chisq` (`df`)
+6. normal `norm` (`mean`, `sd`)
+7. poisson `pois` (`lambda`)
+8. student `t` (`df`)
+
+## Examples
+
+```R
+x=seq(-3,3,0.01) # creates a set of number from -3 to 3 with a .01 pace
+pdf=dnorm(x) # get the image of each x value (density) > bell function
+pdf=pnorm(x) # get the image of each x value (FDR) > integral function
+pdf=pnorm(x) # get the quantile of each x value
+pdf=rnorm(x) # get random val for each x value
+plot(x,pdf,type="l") # displays on a line plot the values
+```
+
+
+`pbinom(s,t,p)` return the probability of having `s` success or **less** with `t` tries on a `p` probability.
+
+it's the same as this :
+```R
+dbinom(0, 5, 0.5) + dbinom(1, 5, 0.5) + dbinom(2, 5, 0.5) + dbinom(3, 5, 0.5) + dbinom(4, 5, 0.5)
+```
+
+`qt(1-a,df)` returns the value of the student-distribution with `df` as a degree of freedom and `a` as the upper %. Used in hypothesis and confidence intervals.
+`qchisq(1-a, df)` is the same but with Khi-squared distribution
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+qnorm(0.975)
+dnorm(0)
+pnorm(1.96)
+rnorm(20)
+rnorm(10, mean=5, sd=0.5)
+x=seq(-10,10, .01)
+pdf=dnorm(x)
+y=seq(-10, 10, .01)
+pdy=dnorm(y, mean=1, sd=4)
+plot(1, xlim = c(-10, 10), ymlim=c(0, 0.5))
+lines(x, pdf, type="l", col="red")
+lines(y, pdy, type="l", col="blue")
+
