@@ -126,6 +126,9 @@ points(abs, ord)#adds a point at the specified coordinates
 ```
 also sub (subtitle) col (colors)...
 
+you can get an estimated cumulative distribution function with the `ecdf()` function.
+Also known as stairs function.
+
 ### Multiple functions on the same plot : 
 ```R
 plot(x, pdf, type="l", col="red")
@@ -250,6 +253,25 @@ dbinom(0, 5, 0.5) + dbinom(1, 5, 0.5) + dbinom(2, 5, 0.5) + dbinom(3, 5, 0.5) + 
 
 `qt(1-a,df)` returns the value of the student-distribution with `df` as a degree of freedom and `a` as the upper %. Used in hypothesis and confidence intervals.
 `qchisq(1-a, df)` is the same but with Khi-squared distribution
+
+
+## Central-Limit theorem (iid)
+
+```R
+n_ech = 50000
+sz_ech = 300
+prob = 1/2
+
+avgs = rep(0, n_ech)
+for(i in 1:n_ech){
+  ech = rbinom(n=sz_ech, p=prob, size=1)
+  avgs[i] = mean(ech)
+}
+
+hist(avgs, freq=F)  # behave as a Normal law
+mean(avgs)          # almost = prob
+var(avgs)           # almost = prob*(1-prob) / sz_ech
+```
 
 
 
