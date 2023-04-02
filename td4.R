@@ -37,9 +37,24 @@ qbinom(0.8, size=100, prob=.5)
 pbinom(54, size=100, prob=.5)
 
 e = seq(from=0, to=80)
-f = seq(from=10, to=60, by=10)
-boxplot(e, f, notch=T, border="blue")
+f = seq(from=0, to=1600, by=20)
+ef = lm(f ~ e)
+plot(e, f)
+abline()
 
+dexp(5, rate=3)
+
+x = rexp(10000, rate=.1)
+hist(x, nclass=100)
+
+x = rf(10000, df1=5, df2=100);
+hist(x, nclass=100)
+
+df(5, df1=1, df2=1, ncp=2)
+
+abline(h=390)
+
+?dchisq
 
 
 
