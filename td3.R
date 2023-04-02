@@ -55,14 +55,16 @@ x <- rbinom(n=100000, p=1/3, size=1)
 mean(x);
 
 n_ech = 50000
-sz_ech = 3000
+sz_ech = 300
+prob = 1/2
 avgs = rep(0, n_ech)
 for(i in 1:n_ech){
-  ech = rbinom(n=sz_ech, p=1/2, size=1)
+  ech = rt(n=sz_ech, df=20, ncp=0)
   avgs[i] = mean(ech)
 }
 
 hist(avgs, freq=F)
 mean(avgs)
 var(avgs)
-1/4 / sz_ech
+prob*(1-prob) / sz_ech
+
