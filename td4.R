@@ -54,12 +54,15 @@ df(5, df1=1, df2=1, ncp=2)
 
 abline(h=390)
 
-?dchisq
+
+prop.test(17, 100, .20, alternative = "less", conf.level = .95, correct=F)
 
 
-
-
-
+TAB = matrix(c(10, 15, 40, 135), ncol=2)
+rownames(TAB) = c("Age < 20", "Age > 20")
+colnames(TAB) = c("Wt < 2500g", "Wt > 2500g")
+TAB
+chisq.test(TAB, correct=F)
 
 
 
