@@ -64,6 +64,7 @@ colnames(TAB) = c("Wt < 2500g", "Wt > 2500g")
 TAB
 chisq.test(TAB, correct=F)
 
+binom.test(x=42, n=550, conf.level = .95)$conf.int
 
 
 
