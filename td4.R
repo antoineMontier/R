@@ -66,5 +66,20 @@ chisq.test(TAB, correct=F)
 
 binom.test(x=42, n=550, conf.level = .95)$conf.int
 
+reg = lm(maxO3 ~ T12, data=ozone)
+plot(ozone$T12, ozone$maxO3, xlab = "T12", ylab = "maxO3", ylim = c(0, 200), xlim=c(0, 35))
+abline(reg)
+points(col="red", mean(ozone$T12), mean(ozone$maxO3))
+lines(reg$residuals)      
+reg$coefficients
+
+
+
+
+
+
+
+
+
 
 
