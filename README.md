@@ -1,5 +1,17 @@
 # R-Learning
 
+
+## Project architecture
+```sh
+│ 
+├── README.md
+├── td2.R
+├── td3.R
+└── td4.R
+```
+
+## Lesson
+
 to launch R : type `$ R` in terminal. `> help(command)` can be useful. `q()` is the exit function.
 
 # Basics
@@ -230,7 +242,7 @@ For each probabiliy law, there are 4 functions :
 5. chi-squared`chisq` (`df`)
 6. normal `norm` (`mean`, `sd`)
 7. poisson `pois` (`lambda`)
-8. student `t` (`df`)
+**8**. student `t` (`df`)
 
 ## Examples
 
